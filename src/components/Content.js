@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { Switch, Route } from "react-router-dom";
-import Home from "./Home";
-import Shop from "./Shop";
+import { Routes, Route } from "react-router-dom";
+import Home from "../views/Home";
+import Shop from "../views/Shop";
 
 const Content = () => {
   return (
     <StyledContent>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/shop" component={Shop} />
-      </Switch>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/shop" element={<Shop />} />
+      </Routes>
     </StyledContent>
   );
 };

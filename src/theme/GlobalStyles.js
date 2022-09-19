@@ -9,10 +9,15 @@ const GlobalStyle = styled.createGlobalStyle`
 
   body {
     font-family: "Mulish", sans-serif;
+    min-height: 100vh;
   }
 
   a {
     text-decoration: none;
+  }
+
+  #root {
+    min-height: 100vh;
   }
 `;
 

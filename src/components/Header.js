@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import Navigation from "./Navigation";
+
 const Header = () => {
   return (
     <StyledHeader>
       <HeaderContainer>
-        <HeaderTitle>Header</HeaderTitle>
+        <HeaderTitle>Food Emporium</HeaderTitle>
+        <Navigation />
       </HeaderContainer>
     </StyledHeader>
   );
@@ -26,7 +29,7 @@ const HeaderContainer = styled.div`
 `;
 
 const HeaderTitle = styled.h1`
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 700;
 `;
 

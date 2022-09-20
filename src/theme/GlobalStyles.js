@@ -7,17 +7,17 @@ const GlobalStyle = styled.createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html {
+    height: 100%;
+  }
+
   body {
     font-family: "Mulish", sans-serif;
-    min-height: 100vh;
+    height: 100%;
   }
 
   a {
     text-decoration: none;
-  }
-
-  #root {
-    min-height: 100vh;
   }
 `;
 

@@ -6,34 +6,43 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <HomeContainer>
-      <HomeContent>
-        <h3>Hungry?</h3>
-        <h3>Bored?</h3>
-        <h3>Want to eat something yummy?</h3>
-        <h3>We've got You covered!</h3>
-        <ButtonLink to={"/shop"}>Click here for more!</ButtonLink>
-      </HomeContent>
-      <HomeContent>
-        <img src={TacoImg} alt="taco" />
-      </HomeContent>
+      <HomeWrapper>
+        <HomeContent>
+          <h3>Hungry?</h3>
+          <h3>Bored?</h3>
+          <h3>Want to eat something yummy?</h3>
+          <h3>We've got You covered!</h3>
+          <ButtonLink to={"/shop"}>Click here for more!</ButtonLink>
+        </HomeContent>
+        <HomeContent>
+          <img src={TacoImg} alt="taco" />
+        </HomeContent>
+      </HomeWrapper>
     </HomeContainer>
   );
 };
 
 const HomeContainer = styled.div`
+  width: 100%;
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors.quaternary};
+`;
+
+const HomeWrapper = styled.div`
   width: 90%;
   margin: 0 auto;
   display: flex;
   padding: 1rem 0;
-  min-height: 100%;
   justify-content: space-between;
-  border: 1px solid red;
+  height: 100%;
 `;
 
 const HomeContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100%;
+  padding-top: 10rem;
 
   h3 {
     font-size: 2rem;

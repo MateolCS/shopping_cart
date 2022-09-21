@@ -1,14 +1,18 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Content from "./components/Content";
+import Shop from "./views/Shop";
+import Home from "./views/Home";
 const App = () => {
   return (
     <MainWrapper>
       <Router>
         <Header />
-        <Content />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/shop" element={<Shop />} />
+        </Routes>
         <Footer />
       </Router>
     </MainWrapper>

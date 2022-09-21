@@ -7,7 +7,7 @@ const Header = () => {
     <StyledHeader>
       <HeaderContainer>
         <HeaderTitle>Food Emporium</HeaderTitle>
-        <Navigation numberOfItems={null} />
+        <Navigation numberOfItems={0} />
       </HeaderContainer>
     </StyledHeader>
   );
@@ -16,7 +16,7 @@ const Header = () => {
 const StyledHeader = styled.header`
     width: 100%;
     padding 1rem 0;
-    background: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.quaternary};
 `;
 

@@ -15,7 +15,7 @@ const Navigation = ({ numberOfItems }) => {
       <StyledLink to={"/cart"}>
         <CartContainer>
           <CartIcon />
-          {numberOfItems !== null && <CartItems>{numberOfItems}</CartItems>}
+          {numberOfItems !== 0 && <CartItems>{numberOfItems}</CartItems>}
         </CartContainer>
       </StyledLink>
     </StyledNavigation>

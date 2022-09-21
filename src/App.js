@@ -4,7 +4,10 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Shop from "./views/Shop";
 import Home from "./views/Home";
+import { useState } from "react";
 const App = () => {
+  const [selectedItems, setSelectedItems] = useState([]);
+
   return (
     <MainWrapper>
       <Router>

@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 
-const Shop = () => {
-  const [items, setItems] = useState([
+const Shop = ({ onItemAdd }) => {
+  const [meals, setMeals] = useState([
     {
       id: 1,
       name: "Pizza",
@@ -69,11 +69,18 @@ const Shop = () => {
   return (
     <ShopContainer>
       <ShopWrapper>
-        {items.map((item) => {
+        {meals.map((meal) => {
           return (
-            <ShopItem key={item.id}>
-              <img src={item.img} alt={item.name} />
-              <ItemName>{item.name}</ItemName>
+            <ShopItem key={meal.id}>
+              <img src={meal.img} alt={meal.name} />
+              <ItemName>{meal.name}</ItemName>
+              <button
+                onClick={() => {
+                  onItemAdd(meal);
+                }}
+              >
+                Add to cart
+              </button>
             </ShopItem>
           );
         })}

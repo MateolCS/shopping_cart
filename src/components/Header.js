@@ -7,7 +7,7 @@ const Header = () => {
     <StyledHeader>
       <HeaderContainer>
         <HeaderTitle>Food Emporium</HeaderTitle>
-        <Navigation numberOfItems={0} />
+        <Navigation numberOfItems={7} />
       </HeaderContainer>
     </StyledHeader>
   );

@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 
 const Navigation = ({ numberOfItems }) => {
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     <StyledNavigation>
       <StyledLink to={"/"}>
@@ -15,7 +17,9 @@ const Navigation = ({ numberOfItems }) => {
       <StyledLink to={"/cart"}>
         <CartContainer>
           <CartIcon />
-          {numberOfItems !== 0 && <CartItems>{numberOfItems}</CartItems>}
+          {location.pathname !== "/cart"
+            ? numberOfItems !== 0 && <CartItems>{numberOfItems}</CartItems>
+            : null}
         </CartContainer>
       </StyledLink>
     </StyledNavigation>
@@ -50,7 +54,7 @@ const CartContainer = styled.li`
 const CartItems = styled.p`
   background-color: ${({ theme }) => theme.colors.quaternary};
   position: absolute;
-  top: -25px;
+  top: -20px;
   right: -20px;
   border-radius: 50%;
   width: 30px;

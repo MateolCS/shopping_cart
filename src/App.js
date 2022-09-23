@@ -26,13 +26,29 @@ const App = () => {
     setSelectedItems([...selectedItems, { meal: inItem, quantity: 1 }]);
   };
 
+  const deleteItem = (inItem) => {
+    const newItems = selectedItems.map((item) =>
+      item.meal.id === inItem.id
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+
+    const finalItems = newItems.filter((item) => item.quantity > 0);
+
+    setSelectedItems(finalItems);
+  };
+
   return (
     <MainWrapper>
       <Router>
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/shop" element={<Shop onItemAdd={addItem} />} />
+          <Route
+            exact
+            path="/shop"
+            element={<Shop onItemAdd={addItem} onItemDelete={deleteItem} />}
+          />
         </Routes>
         <Footer />
       </Router>

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 
-const Shop = ({ onItemAdd }) => {
+const Shop = ({ onItemAdd, onItemDelete }) => {
   const [meals, setMeals] = useState([
     {
       id: 1,
@@ -80,6 +80,13 @@ const Shop = ({ onItemAdd }) => {
                 }}
               >
                 Add to cart
+              </button>
+              <button
+                onClick={() => {
+                  onItemDelete(meal);
+                }}
+              >
+                delete
               </button>
             </ShopItem>
           );

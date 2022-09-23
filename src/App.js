@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Shop from "./views/Shop";
 import Home from "./views/Home";
+import ShoppingCart from "./views/ShoppingCart";
 import { useState } from "react";
 const App = () => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -48,6 +49,11 @@ const App = () => {
             exact
             path="/shop"
             element={<Shop onItemAdd={addItem} onItemDelete={deleteItem} />}
+          />
+          <Route
+            exact
+            path="/cart"
+            element={<ShoppingCart cartContent={selectedItems} />}
           />
         </Routes>
         <Footer />

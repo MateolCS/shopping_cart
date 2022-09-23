@@ -74,20 +74,14 @@ const Shop = ({ onItemAdd, onItemDelete }) => {
             <ShopItem key={meal.id}>
               <img src={meal.img} alt={meal.name} />
               <ItemName>{meal.name}</ItemName>
-              <button
+              <ItemPrice>Price: {meal.price}$</ItemPrice>
+              <AddItemButton
                 onClick={() => {
                   onItemAdd(meal);
                 }}
               >
                 Add to cart
-              </button>
-              <button
-                onClick={() => {
-                  onItemDelete(meal);
-                }}
-              >
-                delete
-              </button>
+              </AddItemButton>
             </ShopItem>
           );
         })}
@@ -99,6 +93,7 @@ const Shop = ({ onItemAdd, onItemDelete }) => {
 const ShopContainer = styled.div`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.quaternary};
+  padding-bottom: 1rem;
 `;
 
 const ShopWrapper = styled.div`
@@ -113,15 +108,37 @@ const ShopWrapper = styled.div`
 const ShopItem = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
 
   img {
     width: 90%;
   }
 `;
 
-const ItemName = styled.p`
+const ItemName = styled.h5`
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.secondary};
+  text-align: center;
+`;
+
+const ItemPrice = styled.p`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.secondary};
+  text-align: center;
+`;
+
+const AddItemButton = styled.button`
+  background-color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.quaternary};
+  border-radius: 5px;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  font-size: 1rem;
+  padding: 0.2rem 0;
+  cursor: pointer;
+  width: 100%;
 `;
 
 export default Shop;

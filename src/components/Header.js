@@ -15,7 +15,7 @@ const Header = () => {
 
 const StyledHeader = styled.header`
     width: 100%;
-    padding 1rem 0;
+    padding .7rem 0;
     background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.quaternary};
 `;

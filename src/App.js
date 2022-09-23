@@ -27,15 +27,15 @@ const App = () => {
   };
 
   const deleteItem = (inItem) => {
-    const newItems = selectedItems.map((item) =>
-      item.meal.id === inItem.id
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    );
+    const newItems = selectedItems
+      .map((item) =>
+        item.meal.id === inItem.id
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+      .filter((item) => item.quantity > 0);
 
-    const finalItems = newItems.filter((item) => item.quantity > 0);
-
-    setSelectedItems(finalItems);
+    setSelectedItems(newItems);
   };
 
   return (

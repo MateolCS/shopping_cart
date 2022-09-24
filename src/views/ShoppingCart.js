@@ -1,24 +1,37 @@
 import React from "react";
 import styled from "styled-components";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { GrClose } from "react-icons/gr";
+import { useState } from "react";
+
 const ShoppingCart = ({ cartContent }) => {
+  const [total, setTotal] = useState(
+    cartContent.reduce((acc, item) => acc + item.meal.price * item.quantity, 0)
+  );
+
   return (
     <ShoppingCartContainer>
       <ShoppingCartWrapper>
         {cartContent.map((item) => {
           return (
             <ShoppingCartItem key={item.meal.id}>
-              <ShoppingCartItemName>{item.meal.name}</ShoppingCartItemName>
-              <ShoppingCartItemQuantityContainer>
-                <FaMinus />
-                <ShoppingCartItemQuantity>
-                  {item.quantity}
-                </ShoppingCartItemQuantity>
-                <FaPlus />
-              </ShoppingCartItemQuantityContainer>
+              <Wrapper>
+                <ShoppingCartItemName>{item.meal.name}</ShoppingCartItemName>
+                <ShoppingCartItemQuantityContainer>
+                  <Minus />
+                  <ShoppingCartItemQuantity>
+                    {item.quantity}
+                  </ShoppingCartItemQuantity>
+                  <Plus />
+                </ShoppingCartItemQuantityContainer>
+              </Wrapper>
+              <Close />
             </ShoppingCartItem>
           );
         })}
+        <TotalContainer>
+          <Total>Total: {total}$</Total>
+        </TotalContainer>
       </ShoppingCartWrapper>
     </ShoppingCartContainer>
   );
@@ -30,7 +43,7 @@ const ShoppingCartContainer = styled.div`
 `;
 
 const ShoppingCartWrapper = styled.div`
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   padding-top: 1rem;
   display: flex;
@@ -46,7 +59,7 @@ const ShoppingCartItem = styled.div`
 `;
 
 const ShoppingCartItemName = styled.h5`
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 700;
 `;
 
@@ -54,13 +67,55 @@ const ShoppingCartItemQuantityContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  align-self: center;
 `;
 
 const ShoppingCartItemQuantity = styled.p`
   font-size: 1.3rem;
   font-weight: 700;
-  padding: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  border: 3px solid ${({ theme }) => theme.colors.secondary};
+`;
+
+const Minus = styled(FaMinus)`
+  font-size: 1.3rem;
+  color: ${({ theme }) => theme.colors.primary};
+`;
+
+const Plus = styled(FaPlus)`
+  font-size: 1.3rem;
+  color: ${({ theme }) => theme.colors.primary};
+`;
+
+const Close = styled(GrClose)`
+  font-size: 1.3rem;
+  color: ${({ theme }) => theme.colors.secondary};
+  font-weight: 700;
+
+  &:hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.primary};
+  }
+`;
+
+const Wrapper = styled.div`
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const TotalContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1.4rem;
+`;
+
+const Total = styled.h4`
+  font-size: 2rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export default ShoppingCart;

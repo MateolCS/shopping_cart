@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { useEffect } from "react";
 
 const Navigation = ({ numberOfItems }) => {
+  useEffect(() => {}, [numberOfItems]);
+
   const location = useLocation();
-  console.log(location.pathname);
   return (
     <StyledNavigation>
       <StyledLink to={"/"}>

@@ -1,13 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import Navigation from "./Navigation";
+import { useState, useEffect } from "react";
 
-const Header = () => {
+const Header = ({ cartContent }) => {
+  const [numberOfItems, setNumberOfItems] = useState(0);
+
+  useEffect(() => {
+    setNumberOfItems(cartContent.reduce((acc, item) => acc + item.quantity, 0));
+  }, [cartContent]);
+  console.log(cartContent);
+
   return (
     <StyledHeader>
       <HeaderContainer>
         <HeaderTitle>Food Emporium</HeaderTitle>
-        <Navigation numberOfItems={7} />
+        <Navigation numberOfItems={numberOfItems} />
       </HeaderContainer>
     </StyledHeader>
   );

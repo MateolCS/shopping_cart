@@ -35,14 +35,18 @@ const App = () => {
           : item
       )
       .filter((item) => item.quantity > 0);
+    setSelectedItems(newItems);
+  };
 
+  const deleteFromCart = (inItem) => {
+    const newItems = selectedItems.filter((item) => item.meal.id !== inItem.id);
     setSelectedItems(newItems);
   };
 
   return (
     <MainWrapper>
       <Router>
-        <Header />
+        <Header cartContent={selectedItems} />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route
@@ -53,7 +57,14 @@ const App = () => {
           <Route
             exact
             path="/cart"
-            element={<ShoppingCart cartContent={selectedItems} />}
+            element={
+              <ShoppingCart
+                cartContent={selectedItems}
+                onItemAdd={addItem}
+                onItemDelete={deleteItem}
+                onDeleteFromCart={deleteFromCart}
+              />
+            }
           />
         </Routes>
         <Footer />

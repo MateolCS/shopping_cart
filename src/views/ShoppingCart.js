@@ -2,12 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const ShoppingCart = ({ cartContent }) => {
+const ShoppingCart = ({
+  cartContent,
+  onItemAdd,
+  onItemDelete,
+  onDeleteFromCart,
+}) => {
   const [total, setTotal] = useState(
     cartContent.reduce((acc, item) => acc + item.meal.price * item.quantity, 0)
   );
+
+  useEffect(() => {}, [cartContent]);
 
   return (
     <ShoppingCartContainer>
@@ -18,19 +25,34 @@ const ShoppingCart = ({ cartContent }) => {
               <Wrapper>
                 <ShoppingCartItemName>{item.meal.name}</ShoppingCartItemName>
                 <ShoppingCartItemQuantityContainer>
-                  <Minus />
+                  <Minus
+                    onClick={() => {
+                      onItemDelete(item.meal);
+                      setTotal(total - item.meal.price);
+                    }}
+                  />
                   <ShoppingCartItemQuantity>
                     {item.quantity}
                   </ShoppingCartItemQuantity>
-                  <Plus />
+                  <Plus
+                    onClick={() => {
+                      onItemAdd(item.meal);
+                      setTotal(total + item.meal.price);
+                    }}
+                  />
                 </ShoppingCartItemQuantityContainer>
               </Wrapper>
-              <Close />
+              <Close
+                onClick={() => {
+                  onDeleteFromCart(item.meal);
+                  setTotal(total - item.meal.price * item.quantity);
+                }}
+              />
             </ShoppingCartItem>
           );
         })}
         <TotalContainer>
-          <Total>Total: {total}$</Total>
+          {total !== 0 && <Total>Total: {total}$</Total>}
         </TotalContainer>
       </ShoppingCartWrapper>
     </ShoppingCartContainer>

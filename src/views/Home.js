@@ -35,6 +35,11 @@ const HomeWrapper = styled.div`
   padding: 1rem 0;
   justify-content: space-between;
   height: 100%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `;
 
 const HomeContent = styled.div`
@@ -47,6 +52,10 @@ const HomeContent = styled.div`
   h3 {
     font-size: 2rem;
     margin: 0.5rem 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding-top: 1rem;
   }
 `;
 

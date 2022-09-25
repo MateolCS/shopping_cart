@@ -21,6 +21,10 @@ const StyledFooter = styled.footer`
     padding 1rem 0;
     background: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.quaternary};
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+      margin-bottom: 3.9rem;
+    }
 `;
 
 const FooterContainer = styled.div`

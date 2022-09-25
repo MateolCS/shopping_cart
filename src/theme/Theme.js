@@ -6,6 +6,9 @@ const Theme = {
     quaternary: "#EED7C5",
     background: "#EEE2DF",
   },
+  breakpoints: {
+    mobile: "768px",
+  },
 };
 
 export default Theme;

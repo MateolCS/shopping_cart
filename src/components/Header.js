@@ -34,11 +34,20 @@ const HeaderContainer = styled.div`
   align-items: center;
   width: 90%;
   margin: 0 auto;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    flex-direction: column;
+  }
 `;
 
 const HeaderTitle = styled.h1`
   font-size: 3rem;
   font-weight: 700;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 2rem;
+    margin-bottom: 1.4rem;
+  }
 `;
 
 export default Header;

@@ -36,6 +36,11 @@ const StyledNavigation = styled.nav`
   li {
     list-style: none;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 100%;
+    justify-content: space-evenly;
+  }
 `;
 
 const StyledLink = styled(Link)`
